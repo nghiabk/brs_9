@@ -3,9 +3,11 @@
   <div class="col-md-8 col-md-offset-2">
     <h1>List all category</h1>
     <ul class="categories_list">
-      <div class="admin-new-category">
-        <%= link_to "Create new category", new_category_path %>
-      </div>
+      <% if current_user.role == "admin" %>
+        <div class="admin-new-category">
+          <%= link_to "Create new category", new_category_path %>
+        </div>
+      <% end %>
       <div id="categories"> 
         <%= render @categories %>
       </div>

@@ -5,9 +5,11 @@
   </div>
   <span><%= category.name %></span>
 </div>
-<div class="manage-category">
-  <%= link_to "Edit", edit_category_path(category) %> |
-  <%= link_to "delete", category, method: :delete,
-                                  data: {confirm: "You sure?"} %>
-</div>
+<% if current_user.role == "admin" %>
+  <div class="manage-category">
+    <%= link_to "Edit", edit_category_path(category) %> |
+    <%= link_to "delete", category, method: :delete,
+                                    data: {confirm: "You sure?"} %>
+  </div>
+<% end %>
 </li>
