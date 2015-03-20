@@ -1,0 +1,5 @@
+<h1><%= current_user.username %></h1>
+<% @book_states.each do |book_state| %>
+  <%= render book_state.book %>
+  <b>State:</b><%= book_state.state %><br><br><br>
+<% end %>

@@ -211,3 +211,15 @@ input[type='checkbox'] {
     width:  70px;
   }
 }
+
+/* Books show */
+
+.book {
+  text-align: left;
+  width: 500px;
+  min-height: 100px;
+  img {
+    margin-right: 10px;
+    float: left;
+  }
+}

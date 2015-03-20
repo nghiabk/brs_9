@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+4.times do |n|
+  BookState.create state: "reading", user_id: 1, book_id: n+1
+  BookState.create state: "readed", user_id: 1, book_id: n+1
+end
