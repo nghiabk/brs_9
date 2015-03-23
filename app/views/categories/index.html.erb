@@ -5,7 +5,7 @@
     <ul class="categories_list">
       <% if current_user.is_admin? %>
         <div class="admin-new-category">
-          <%= link_to "Create new category", new_category_path %>
+          <%= link_to "Create new category", new_admin_category_path %>
         </div>
       <% end %>
       <div id="categories"> 

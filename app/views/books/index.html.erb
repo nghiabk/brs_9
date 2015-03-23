@@ -1,0 +1,16 @@
+<% provide(:title, "Book") %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>List all category</h1>
+    <ul class="categories_list">
+      <% if current_user.is_admin? %>
+        <div class="admin-new-category">
+          <%= link_to "Create new book", new_admin_book_path %>
+        </div>
+      <% end %>
+      <div id="categories"> 
+        <%= render @books %>
+      </div>
+    </ul>  
+  </div>
+</div> 

@@ -8,4 +8,12 @@ Rails.application.routes.draw do
   resources :categories
   resources :books
   resources :users
+
+  namespace :admin do
+    root 'categories#new'
+    resources :categories 
+    resources :books do
+      resources :image_books
+    end
+  end
 end

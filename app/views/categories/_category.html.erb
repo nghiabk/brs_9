@@ -7,8 +7,8 @@
 </div>
 <% if current_user.is_admin? %>  
   <div class="manage-category">
-    <%= link_to "Edit", edit_category_path(category) %> |
-    <%= link_to "delete", category, method: :delete,
+    <%= link_to "Edit", edit_admin_category_path(category) %> |
+    <%= link_to "delete", admin_category_path(category), method: :delete,
                                     data: {confirm: "You sure?"} %>
   </div>
 <% end %>

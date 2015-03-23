@@ -1,10 +1,11 @@
 class Book < ActiveRecord::Base
   belongs_to :category
-  has_many :reviews
-  has_many :likes
-  has_many :comments
-  has_many :favorites
-  has_many :book_states
+  has_many :reviews, dependent: :destroy
+  has_many :image_books, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :book_states, dependent: :destroy
   
   validates :title, presence: true, length: {minimum: 6}
   validates :author, presence: true, length: {minimum: 6}
