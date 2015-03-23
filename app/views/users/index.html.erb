@@ -6,7 +6,9 @@
       <li>
         <%= image_tag user.image.url if user.image? %>
         <%= user.username %>
-        <%= link_to "delete", user, method: :delete, data: {confirm: "you sure?"} %>
+        <% unless user.is_user? current_user %>
+          <%= link_to "delete", user, method: :delete, data: {confirm: "you sure?"} %>
+        <% end %>
       </li>
     <% end %>
   </ul>
