@@ -1,0 +1,36 @@
+<% provide :title, "#{@review.user.username} review of #{@review.book.title}" %>
+<div class="row">
+  <div class="show-review">
+    <div class="show-book">
+      <%= image_tag @review.book.image.url if @review.book.image? %>
+    </div>
+    <div class="info-review">
+      <div class="name-book">
+        <span><%= link_to "#{@review.book.title}", 
+          @review.book %> by <%= link_to "#{@review.book.author}" %>
+        </span>
+      </div>
+      <div class="show-review-region">
+        <div class="info-user">
+          <div class="info-user-avatar">
+            <%= image_tag @review.user.image.url if @review.user.image? %>
+          </div>
+          <div class="info-user-rating">
+            <span><%= @review.user.username %> review</span>
+          </div>  
+        </div>
+        <div class="show-review-content">  
+          <p><%= @review.content %></p>
+        </div>  
+      </div>  
+    </div>  
+  </div>
+  <div class="show-comments">
+    <div class="show-comments-title">
+      <span>Comments</span>
+    </div>
+    <div class="show-comments-list">
+      <%= render @review.comments %>
+    </div>  
+  </div>  
+</div>  
