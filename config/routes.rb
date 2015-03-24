@@ -11,7 +11,16 @@ Rails.application.routes.draw do
   resources :books do
     resources :reviews, except: [:show, :destroy, :index]
   end  
+  
   resources :reviews, only: [:show, :destroy] do
     resources :comments, only: [:index, :create, :destroy]
-  end  
+  end
+
+  namespace :admin do
+    root 'categories#new'
+    resources :categories 
+    resources :books do
+      resources :image_books
+    end
+  end
 end
