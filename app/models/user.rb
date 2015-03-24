@@ -23,7 +23,11 @@ class User < ActiveRecord::Base
     self == user
   end 
 
-  def review_for_book(book)
+  def review_for_book book
     self.reviews.select{|r| r.book_id == book.id}.first
+  end
+
+  def state_of_book book
+    self.book_states.select{|r| r.book_id == book.id}.first
   end
 end
