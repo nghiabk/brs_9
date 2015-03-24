@@ -6,3 +6,6 @@
   <b>Number pages: </b><%= book.number_page %><br>
   <b>Rating: </b><%= book.rating %><br>
 </div>
+<%= link_to "Edit", edit_admin_book_path(book) %> |
+<%= link_to "delete", admin_book_path(book), method: :delete, data: {confirm: "You sure?"} %>
+<div class="clear"></div><br><br><br><br>

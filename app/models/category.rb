@@ -1,9 +1,9 @@
 class Category < ActiveRecord::Base
-  has_many :books
+  has_many :books, dependent: :destroy
   
   mount_uploader :image, ImageUploader
   
-  validates :name, presence: true
+  validates :name, :image, presence: true
   validate :image_size
 
   private
