@@ -23,4 +23,6 @@ Rails.application.routes.draw do
       resources :image_books
     end
   end
+
+  resources :book_states
 end

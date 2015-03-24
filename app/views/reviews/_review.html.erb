@@ -1,6 +1,6 @@
 <li id="review-<%= review.id %>">
   <div class="gravatar-user">
-    <%= image_tag review.user.image.url if review.user.image? %>
+    <%= image_tag review.user.image? ? review.user.image.url : "default_user.jpeg" %>
   </div>
   <div class="review-region">
     <div class="review-info">

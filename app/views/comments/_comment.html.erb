@@ -1,6 +1,6 @@
 <li id="comment-<%= comment.id %>">
   <div class="comment-avatar">
-    <%= image_tag comment.user.image.url if comment.user.image? %>
+    <%= image_tag comment.user.image? ? comment.user.image.url : "default_user.jpeg" %>
   </div>
   <div class="comment-content-<%= comment.id %>">
     <span><%= comment.user.username %></span>

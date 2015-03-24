@@ -9,11 +9,14 @@ class ReviewsController < ApplicationController
     @review = Review.new review_params
     @review.user = current_user
     if @review.save
-      flash[:success] = "created review"
+      respond_to do |format|
+        format.html
+        format.js {@book = @review.book}
+      end  
     else
-      flash[:danger] = "not created review"  
+      flash[:danger] = "not created review"
+      redirect_to @review.book
     end
-    redirect_to @review.book  
   end  
 
   def edit
@@ -23,7 +26,7 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find params[:id]
     if @review.update_attributes review_params
-      flash[:success] = "success"
+      flash.now[:success] = "update success"
     else
       flash[:danger] = "Review is not updated"  
     end  

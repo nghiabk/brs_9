@@ -1,4 +1,4 @@
 $('#comments-review-<%= @comment.review.id%>').append("<%= j (render @comment) %>");
-$('#comment_content-<%= @comment.id %>').val("");
+$('#comment_content-<%= @comment.review.id %>').val("");
 $('#count-comment-review-<%= @comment.review.id %>').html('<%= pluralize(@comment.review.comments.count, 
   "comment", "comments") %>');
