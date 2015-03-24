@@ -1,0 +1,21 @@
+<tr>
+  <td class="text-center"><%= request.book_name %></td>
+  <td class="text-center"><%= request.book_url %></td>  
+  <td class="text-center"><%= request.user.email %></td>
+  <td class="col-state">
+    <%= form_for [:admin, request], remote: true do |f| %>
+      <%= f.radio_button :state, "accepted" %><span>accepted</span>
+      <%= f.radio_button :state, "rejected" %><span>rejected</span>
+      <%= f.submit "update" %>
+    <% end %>
+  </td>
+</tr>
+
+<script type="text/javascript">
+  $(".show-result-state").hide();
+  $(".edit_request input[type='submit']").hide();
+  $(".edit_request input[type='radio']").click(function(){
+    $(this).parent().submit();
+    $(this).parent().children("p").show().fadeOut(2000);
+  });
+</script>
