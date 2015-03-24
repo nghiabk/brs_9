@@ -1,0 +1,68 @@
+<% provide :title, 'Show book' %>
+<div class="row">
+  <h1>Show book</h1>
+  <div class="book-info">
+    <div class="book-image">
+      <%= image_tag @book.image.url, alt: @book.title %>
+    </div>
+    <div class="book-detail">
+      <table>
+        <tr>
+          <td>Title:</td>
+          <td><%= @book.title %></td>
+        </tr>
+        <tr>
+          <td>Author:</td>
+          <td><%= @book.author %></td>
+        </tr>
+        <tr>
+          <td>Number page:</td>
+          <td><%= pluralize(@book.number_page, "book", "books") %></td>
+        </tr>
+        <tr>
+          <td>Publish date:</td>
+          <td><%= @book.publish_date.strftime("The date is %m/%d/%y") %></td>
+        </tr>  
+        <tr>
+          <td>Rating:</td>
+          <td><div id="book-rating"><%= @book.rating %></td>
+        </tr>
+        <tr>
+          <td>Category:</td>
+          <td><%= @book.category.name %></td>
+        </tr>
+      </table>  
+    </div>  
+  </div>
+  <div class="clear"></div>
+  <div class="book-review">
+    <% unless current_user.review_for_book(@book).nil? %>
+      <%= link_to "edit my review", 
+      edit_book_review_path(@book, current_user.review_for_book(@book)) %>
+      <%= link_to "delete review", review_path(current_user.review_for_book(@book)), method: :delete %>
+    <% else %>
+      <span>create your review</span>
+      <div class="show-form-review">
+        <%= form_for [@book, Review.new] do |f| %>
+          <%= f.hidden_field :book_id, value: @book.id %>
+          <%= f.hidden_field :rate, value: 0 %>
+          <%= f.label :content %>
+          <%= f.text_field :content, placeholder: "Review name", 
+          class: "form-control" %><br>
+          <%= f.submit "Create review", class: "btn btn-primary" %>
+        <% end %>        
+      </div>  
+    <% end %>
+    <div class="title-review">
+      <span>Community Reviews</span>
+    </div>
+    <div class="filter-review">
+      <div class="statics-review">
+        <span>(showing <%= pluralize(@book.reviews.count, "review", "reviews") %>)</span>
+      </div>  
+    </div>
+    <div class="reviews">
+      <%= render @book.reviews %>
+    </div>  
+  </div>  
+</div>  

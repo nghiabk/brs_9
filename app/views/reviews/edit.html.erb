@@ -1,0 +1,22 @@
+<% provide :title, "Edit review of #{@review.book.title}" %>
+<div class="row">
+  <div class="edit-book-info">
+    <span>Edit review of <%= link_to "#{@review.book.title}", @review.book %></span>
+    <div class="edit-book-image">
+      <%= image_tag @review.book.image.url if @review.book.image? %>
+    </div>
+    <div class="edit-book-info">
+      <span>
+        <%= link_to "#{@review.book.title}", @review.book %> by 
+        <%= link_to "#{@review.book.author}", '#' %>
+      </span>
+    </div>  
+  </div>
+  <div class="edit-review-form">
+    <%= form_for [@book, @review], url: book_review_path do |f| %>
+      <%= f.label :content %>
+      <%= f.text_field :content, class: "form-control" %>
+      <%= f.submit "Submit" %>
+    <% end %>
+  </div>  
+</div>  

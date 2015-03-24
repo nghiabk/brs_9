@@ -1,0 +1,25 @@
+<li id="review-<%= review.id %>">
+  <div class="gravatar-user">
+    <%= image_tag review.user.image.url if review.user.image? %>
+  </div>
+  <div class="review-region">
+    <div class="review-info">
+      <strong><%= current_user.username %></strong>
+      rated it
+      <div class="show-stars">
+      </div>  
+    </div>
+    <div class="review-content">
+      <%= review.content %>
+    </div>
+    <div class="review-comment">
+      <%= link_to pluralize(review.comments.count, "comment", "comments"),
+              review_comments_path(review), remote: true, id: "count-comment-review-#{review.id}" %>
+      <%= link_to "see review", review %>
+    </div>
+    <div class="comment-region">
+      <div id="show-comments-review-<%= review.id %>"></div>
+    </div>  
+  </div>
+  <div class="clear"></div>    
+</li>

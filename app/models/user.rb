@@ -22,4 +22,8 @@ class User < ActiveRecord::Base
   def is_user? user
     self == user
   end 
+
+  def review_for_book(book)
+    self.reviews.select{|r| r.book_id == book.id}.first
+  end
 end

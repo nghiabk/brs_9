@@ -1,0 +1,10 @@
+<div class="comments">
+  <div id="comments-review-<%= @review.id%>">
+    <%= render @review.comments %>
+  </div>
+</div> 
+<div class="comment-form">  
+  <% if user_signed_in? %>
+    <%= render "form_comment" %>
+  <% end %>
+</div>
