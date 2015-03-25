@@ -7,22 +7,21 @@ Rails.application.routes.draw do
   devise_for :users
   resources :categories
   resources :users
-
+  resources :book_states
+  resources :requests, except: :show
   resources :books do
     resources :reviews, except: [:show, :destroy, :index]
   end  
-  
   resources :reviews, only: [:show, :destroy] do
     resources :comments, only: [:index, :create, :destroy]
   end
 
   namespace :admin do
-    root 'categories#new'
+    root 'requests#index'
     resources :categories 
     resources :books do
       resources :image_books
     end
+    resources :requests, only: [:index, :update]
   end
-
-  resources :book_states
 end

@@ -1,0 +1,8 @@
+<%= form_for @request do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <%= f.label "Book Name" %>
+  <%= f.text_field :book_name, class: "form-control" %>
+  <%= f.label "URL Book" %>
+  <%= f.text_field :book_url, class: "form-control" %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

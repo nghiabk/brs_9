@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) {|u| u.permit( :image, 
       :password, :password_confirmation, :current_password)}
   end
+
+  def admin_user
+    redirect_to root_url  unless current_user.is_admin?  
+  end
 end
