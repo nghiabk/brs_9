@@ -1,11 +1,31 @@
 <h1>Create Books</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <div class="show-result well">Book is created!</div>
-    <%= render "form" %>
+    <%= form_for [:admin, @book] do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
+    
+    <%= f.label "Category" %>
+    <%= f.select(:category_id, options_from_collection_for_select(Category.all,"id","name"), class: "form-control") %>
+    
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+    
+    <%= f.label :author %>
+    <%= f.text_field :author, class: "form-control" %>
+    
+    <%= f.label "Publish date" %>
+    <%= f.date_field :publish_date, class: "form-control" %>
+    
+    <%= f.label "Number Pages" %>
+    <%= f.number_field :number_page, in: 0...1000, class: "form-control" %>
+ 
+    <%= f.fields_for :photos, form: {id: "field_photo"} do |builder| %>
+      <%= render "photo_fields", :f => builder %>
+    <% end %>
+    
+    <p><%= link_to_add_fields "Add image", f, :photos %></p>
+
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
   </div>
 </div>
-
-<script type="text/javascript">
-  $(".show-result").hide();
-</script>

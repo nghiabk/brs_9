@@ -1,5 +1,5 @@
 <div class="book">
-  <%= image_tag book.image.url if book.image? %>
+  <%=  render book.photos %>  
   <b>Title: </b><%= book.title %><br>
   <b>Author: </b><%= book.author %><br>
   <b>Publish_date: </b><%= book.publish_date.strftime("%b %d, %Y") %><br>

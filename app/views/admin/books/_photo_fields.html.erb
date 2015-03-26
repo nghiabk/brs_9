@@ -1,0 +1,10 @@
+<p class="fields">
+<%= link_to_remove_fields "remove", f %><br>
+<%= f.label "Choose Image" %>
+<%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", id: "upload" %>
+
+<%= f.label :important do %>
+important
+<%= f.check_box :important, onclick: "has_one_important_photo(this);" %>
+<% end %>
+</p>

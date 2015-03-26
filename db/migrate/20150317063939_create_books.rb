@@ -6,7 +6,6 @@ class CreateBooks < ActiveRecord::Migration
       t.datetime :publish_date
       t.integer :number_page
       t.integer :rating
-      t.string :image
       t.references :category, index: true
 
       t.timestamps null: false
