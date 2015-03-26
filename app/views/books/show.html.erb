@@ -7,6 +7,9 @@
       <div class="form-book-state">
         <%= render 'button_book_state' %>
       </div>
+      <div class="book-star-rating">
+        <%= render 'book_star_rating' %>        
+      </div>   
     </div>
     <div class="book-detail well">
       <table>
@@ -14,6 +17,15 @@
           <td>Title:</td>
           <td><%= @book.title %></td>
         </tr>
+        <tr>
+          <td>Rate:</td>  
+          <td>
+            <div class="show-book-rate-star">
+              <%= render_stars(@book.rating) %>
+            </div>
+            <div id="book-rating"><%= @book.rating %></div>
+          </td>
+        </tr>        
         <tr>
           <td>Author:</td>
           <td><%= @book.author %></td>
@@ -25,10 +37,6 @@
         <tr>
           <td>Publish date:</td>
           <td><%= @book.publish_date.strftime("The date is %m/%d/%y") %></td>
-        </tr>  
-        <tr>
-          <td>Rating:</td>
-          <td><div id="book-rating"><%= @book.rating %></td>
         </tr>
         <tr>
           <td>Category:</td>

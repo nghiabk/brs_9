@@ -1,3 +1,6 @@
 $(".form-book-state").html("<%= j (render 'books/button_book_state') %>");
 $("#submit-state-book").attr("disabled", true);
 $(".book-review").html("<%= j (render 'books/book_reviews') %>");
+$(".book-star-rating").html("<%= j (render 'books/book_star_rating') %>");
+$(".show-book-rate-star").html("<%= j (render_stars(@review.book.rating)) %>");
+$("#book-rating").html("<%= @review.book.rating %>");

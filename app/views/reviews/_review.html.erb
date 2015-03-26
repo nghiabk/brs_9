@@ -6,7 +6,8 @@
     <div class="review-info">
       <strong><%= current_user.username %></strong>
       rated it
-      <div class="show-stars">
+      <div class="show-your-rate-star">
+        <%= render_stars(review.rate) %>
       </div>  
     </div>
     <div class="review-content">

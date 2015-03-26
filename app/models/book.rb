@@ -15,6 +15,11 @@ class Book < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
   
+  def calculate_rating
+    rates = self.reviews.collect{|r| r.rate if r.rate > 0}
+    return rates.size == 0 ? 0 : rates.sum / rates.size
+  end
+  
   private
 
   def image_size
