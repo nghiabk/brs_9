@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :users
   resources :book_states
+  resources :favorites, only: :create
   resources :requests, except: :show
   resources :books do
     resources :reviews, except: [:show, :destroy, :index]

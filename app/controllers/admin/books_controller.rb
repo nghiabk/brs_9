@@ -17,7 +17,6 @@ class Admin::BooksController < ApplicationController
 
   def edit
     @book = Book.find params[:id]
-    @book.photos.build
   end
 
   def update
