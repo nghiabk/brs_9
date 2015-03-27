@@ -30,4 +30,8 @@ class User < ActiveRecord::Base
   def state_of_book book
     self.book_states.select{|r| r.book_id == book.id}.first
   end
+
+  def favorite_of_book book
+    self.favorites.select{|f| f.book_id == book.id}.first
+  end  
 end

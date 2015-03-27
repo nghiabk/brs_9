@@ -274,6 +274,19 @@ input[type='checkbox'] {
   }
 }
 
+.garalley_book {
+  margin-left: 20%;
+  table {
+    width: 80%;
+    tr {
+      margin-bottom: 20px;
+    }
+    td {
+      width: 20%;
+    }
+  }
+}
+
 .book-review {
   margin-left: 10%;
   margin-right: 10%;
@@ -456,4 +469,35 @@ input[type='checkbox'] {
 }
 .col-state form {
   margin-left: 10px;
- }
+}
+
+.list-books {
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 20px;
+  .book {
+    border: 1px solid $gray-medium-light;
+    padding: 20px;
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .list-book-intro {
+      width: 20%;
+      float: left;
+      .list-book-image {
+        img {
+          width: 100%;
+        }
+      }
+      .list-book-state {
+        margin-top: 10px;
+      }
+    }
+    .list-book-detail {
+      float: right;
+      padding-right: 20px;
+      font-size: 30px;
+    }
+  }
+}

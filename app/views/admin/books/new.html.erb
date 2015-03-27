@@ -20,11 +20,9 @@
       <%= f.number_field :number_page, in: 0...1000, class: "form-control" %>
    
       <%= f.fields_for :photos, form: {id: "field_photo"} do |builder| %>
-        <%= render "photo_fields", :f => builder %>
+        <%= render "photo_fields", f: builder %>
       <% end %>
-      
       <p><%= link_to_add_fields "Add image", f, :photos %></p>
-
       <%= f.submit class: "btn btn-primary" %>
     <% end %>
   </div>

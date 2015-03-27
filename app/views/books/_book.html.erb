@@ -1,11 +1,29 @@
 <div class="book">
-  <%=  render book.photos %>  
-  <b>Title: </b><%= book.title %><br>
-  <b>Author: </b><%= book.author %><br>
-  <b>Publish_date: </b><%= book.publish_date.strftime("%b %d, %Y") %><br>
-  <b>Number pages: </b><%= book.number_page %><br>
-  <b>Rating: </b><%= book.rating %><br>
+  <div class="list-book-intro">
+    <div class="list-book-image">
+        <%= link_to (image_tag book.important_photo.image.url), book %>
+    </div>
+    <div class="list-book-state">
+      <% if current_user.state_of_book(book).nil? %>
+        <%= button_to "New book", {}, disabled: true, class: "btn btn-primary" %>
+      <% else %>
+        <%= button_to current_user.state_of_book(book).state, {}, disabled: true, class: "btn btn-primary" %>
+      <% end %>  
+    </div>  
+  </div>
+  <div class="list-book-detail">
+    <span><%= link_to book.title, book %></span>
+    by <span><%= book.author %></span>
+    <div class="show-book-rate-star">
+      <%= render_stars(book.rating) %>
+    </div>
+    <%= book.rating %> --
+    <%= book.publish_date.strftime("Publish: %m/%d/%y") %>
+    in <%= book.category.name %>
+  </div>
+  <% if current_user.is_admin? %>
+    <%= link_to "Edit", edit_admin_book_path(book) %> |
+    <%= link_to "delete", admin_book_path(book), method: :delete, data: {confirm: "You sure?"} %>
+  <% end %>  
 </div>
-<%= link_to "Edit", edit_admin_book_path(book) %> |
-<%= link_to "delete", admin_book_path(book), method: :delete, data: {confirm: "You sure?"} %>
-<div class="clear"></div><br><br><br><br>
+<div class="clear"></div>  

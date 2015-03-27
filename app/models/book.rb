@@ -11,18 +11,18 @@ class Book < ActiveRecord::Base
   validates :title, presence: true, length: {minimum: 6}
   validates :author, presence: true, length: {minimum: 6}
   validates :publish_date, :number_page, :rating, presence: true
-  validate :image_size
   validate :has_important_photo
 
-  mount_uploader :image, ImageUploader
-
-  accepts_nested_attributes_for :photos, 
-  reject_if: lambda {|a| a[:image].blank?}, allow_destroy: true
+  accepts_nested_attributes_for :photos, allow_destroy: true
   
   def calculate_rating
     rates = self.reviews.collect{|r| r.rate if r.rate > 0}
     return rates.size == 0 ? 0 : rates.sum / rates.size
   end
+
+  def important_photo
+    self.photos.select{|p| p.important == true}.first
+  end  
   
   private
   def image_size
@@ -33,5 +33,5 @@ class Book < ActiveRecord::Base
     unless photos.any? {|photo| photo.important?}
       errors.add(:base, "You have to choose a important photo!")
     end
-  end
+  end  
 end

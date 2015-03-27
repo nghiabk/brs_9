@@ -3,12 +3,15 @@
   <h1>Show book</h1>
   <div class="book-info">
     <div class="book-image">
-      <%= image_tag @book.image? ? @book.image.url : "default_book.jpg" %>
+      <%= image_tag @book.important_photo.image %>
       <div class="form-book-state">
         <%= render 'button_book_state' %>
       </div>
       <div class="book-star-rating">
         <%= render 'book_star_rating' %>        
+      </div>
+      <div id="favorite-book-button">
+        <%= render 'favorite_book_button' %>
       </div>   
     </div>
     <div class="book-detail well">
@@ -46,6 +49,21 @@
     </div>  
   </div>
   <div class="clear"></div>
+  <div class="garalley_book">
+    <span>Garalley book:</span>
+    <table>
+      <tr>
+        <% @book.photos.each_with_index do |image, index| %>
+          <% unless index % 3 == 2 %>
+            <td><%= image_tag image.image %></td>
+          <% else %>
+            <td><%= image_tag image.image %></td>
+          </tr>
+          <tr>
+          <% end %>
+        <% end %>
+    </table>
+  </div>  
   <div class="book-review">
     <%= render 'book_reviews' %>
   </div> 
