@@ -1,0 +1,4 @@
+$('.book-star-rating').html("<%= j (render 'books/book_star_rating') %>");
+$('.show-your-rate-star').html("<%= j (render_stars(@review.rate)) %>");
+$('.show-book-rate-star').html("<%= j (render_stars(@book.rating)) %>");
+$('#book-rating').html("<%= @book.rating %>");

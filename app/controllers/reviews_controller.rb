@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
     @review = Review.new review_params
     @review.user = current_user
     if @review.save
+      @review.book.update_attributes rating: @review.book.calculate_rating.round(2)
       respond_to do |format|
         format.html
         format.js {@book = @review.book}
@@ -26,16 +27,21 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find params[:id]
     if @review.update_attributes review_params
-      flash.now[:success] = "update success"
+      @review.book.update_attributes rating: @review.book.calculate_rating.round(2)
+      respond_to do |format|
+        format.html {redirect_to @review.book}
+        format.js {@book = @review.book}
+      end
     else
-      flash[:danger] = "Review is not updated"  
-    end  
-    redirect_to @review.book
+      flash[:danger] = "Review is not updated"
+      redirect_to @review.book
+    end    
   end
 
   def destroy
     review = Review.find params[:id]
     review.destroy
+    review.book.update_attributes rating: review.book.calculate_rating.round(2)
     flash[:success] = "Review is deleted"
     redirect_to review.book
   end  

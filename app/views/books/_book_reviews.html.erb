@@ -1,9 +1,11 @@
 <div id="form-review"></div>  
-<% unless current_user.review_for_book(@book).nil? %>
+<% if !current_user.review_for_book(@book).nil? %>
   <%= link_to "show my review | ", current_user.review_for_book(@book) %>
   <%= link_to "edit | ", 
   edit_book_review_path(@book, current_user.review_for_book(@book)) %>
   <%= link_to "delete", review_path(current_user.review_for_book(@book)), method: :delete %>
+<% elsif !current_user.state_of_book(@book).nil? %>
+  <%= render 'reviews/new' %> 
 <% end %>
 <div class="title-review well">
   <span>Community Reviews</span>
@@ -15,4 +17,4 @@
 </div>
 <div class="reviews well">
   <%= render @book.reviews %>
-</div>  
+</div>

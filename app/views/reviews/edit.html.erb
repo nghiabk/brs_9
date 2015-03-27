@@ -14,9 +14,15 @@
   </div>
   <div class="edit-review-form">
     <%= form_for [@book, @review], url: book_review_path do |f| %>
-      <%= f.label :content %>
+      <%= f.label :rate, "Rate book:" %><br />
+      <% (1..5).each do |r| %>
+        <%= f.label :rate do %>
+          <%= "#{r}" %><%= f.radio_button :rate, "#{r}", class: "radio" %>
+        <% end %>  
+      <% end %><br />
+      <%= f.label :content, "Your review" %>
       <%= f.text_field :content, class: "form-control" %>
-      <%= f.submit "Submit" %>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
     <% end %>
   </div>  
 </div>  
