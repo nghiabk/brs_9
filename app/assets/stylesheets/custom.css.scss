@@ -446,8 +446,6 @@ input[type='checkbox'] {
   }
 }
 
-
-
 .modal-dialog {
   width: 70%;
   .modal-content {
@@ -500,4 +498,31 @@ input[type='checkbox'] {
       font-size: 30px;
     }
   }
+ }
+
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.users.follow {
+  padding: 0;
 }

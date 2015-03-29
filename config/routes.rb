@@ -1,15 +1,17 @@
-Rails.application.routes.draw do  
+Rails.application.routes.draw do 
   root 'static_pages#home'
   get 'help' => 'static_pages#help'
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
+  match '/users/:id/:type', to: 'users#show', via: :get
 
   devise_for :users
-  resources :categories
   resources :users
+  resources :categories
   resources :book_states
   resources :favorites, only: :create
   resources :requests, except: :show
+  resources :relationships, only: [:create, :destroy]
   resources :books do
     resources :reviews, except: [:show, :destroy, :index]
   end  
