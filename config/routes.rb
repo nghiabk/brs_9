@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users
+  resources :activities do
+    resources :likes, only: [:create, :destroy]
+  end
+
   resources :categories
   resources :book_states
   resources :favorites, only: :create

@@ -3,5 +3,16 @@
   <%= activity.message %>
   <span class="timestamp">
     <%= time_ago_in_words activity.created_at %> ago
-  </span>  
+  </span>
+  <div class="form-like">
+    <div id="count-like-activity-<%= activity.id %>" class="count-like">
+      <%= activity.likes.count %>
+    </div>  
+    <div id="like-activity-<%= activity.id %>" class="button-like">
+      <%= current_user.like?(activity) ? 
+        button_to("Unlike", [activity, current_user.likes.find_by(activity: activity)], method: :delete, remote: true) 
+        : button_to("Like", [activity, Like.new], remote: true) %>
+    </div>  
+  </div>
+  <div class="clear"></div>  
 </li>  
