@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new comment_params
     @comment.user = current_user      
     if @comment.save
+      create_activity @comment.review.id, "comment"
       respond_to do |format|
         format.html
         format.js

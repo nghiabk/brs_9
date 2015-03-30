@@ -2,6 +2,7 @@ class FavoritesController < ApplicationController
   def create
     @favorite = Favorite.new favorite_params
     if @favorite.save
+      create_activity @favorite.book.id, "favorite"
       respond_to do |format|
         format.html
         format.js {@book = @favorite.book}

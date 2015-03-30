@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
   def admin_user
     redirect_to root_url  unless current_user.is_admin?  
   end
+
+  def create_activity target_id, action
+    Activity.create user: current_user, target_id: target_id, action_type: action
+  end  
 end

@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     if @review.save
       @review.book.update_attributes rating: @review.book.calculate_rating.round(2)
+      create_activity @review.id, "review"
       respond_to do |format|
         format.html
         format.js {@book = @review.book}
