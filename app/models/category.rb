@@ -3,7 +3,8 @@ class Category < ActiveRecord::Base
   
   mount_uploader :image, ImageUploader
   
-  validates :name, :image, presence: true
+  validates :name, uniqueness: true
+  validates :image, presence: true
   validate :image_size
 
   private

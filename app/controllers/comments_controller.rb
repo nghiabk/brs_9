@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
   def index
     @review = Review.find params[:review_id]
     respond_to do |format|

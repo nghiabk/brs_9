@@ -12,6 +12,7 @@ User.create! email: "example@gmail.com", username: "example", password: "1234567
   email = "example-#{n+1}@gmail.com"
   User.create! email: email, username: username, password: "12345678", role: "user"
 end
+
 users = User.all
 user  = users.first
 following = users[2..50]

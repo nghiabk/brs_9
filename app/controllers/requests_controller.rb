@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
   before_action :authenticate_user!
+  before_action :not_is_admin
 
   def index
     @requests = current_user.requests.paginate page: params[:page], per_page: 15
@@ -27,6 +28,13 @@ class RequestsController < ApplicationController
   end
 
   private
+  def not_is_admin
+    if current_user.is_admin?
+      flash[:success] = "Admin can't create request"
+      redirect_to root_url
+    end
+  end
+
   def request_params
     params.require(:request).permit :book_name, :book_url
   end   

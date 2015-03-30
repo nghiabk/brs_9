@@ -1,7 +1,4 @@
-class Admin::RequestsController < ApplicationController
-  before_action :authenticate_user!  
-  before_action :admin_user
-  
+class Admin::RequestsController < Admin::BaseAdminController 
   def index
     @requests = Request.paginate page: params[:page], per_page: 15
   end
