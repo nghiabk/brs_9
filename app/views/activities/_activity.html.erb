@@ -1,0 +1,7 @@
+<li id="activity-<%= activity.id %>">
+  <%= link_to activity.user.username, activity.user %>
+  <%= activity.message %>
+  <span class="timestamp">
+    <%= time_ago_in_words activity.created_at %> ago
+  </span>  
+</li>  

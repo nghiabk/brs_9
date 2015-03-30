@@ -3,6 +3,7 @@ class BookStatesController < ApplicationController
     @book_state = BookState.new book_state_params
     if @book_state.save
       flash.now[:success]= "success"
+      create_activity @book_state.book.id, @book_state.state
       respond_to do |format|
         format.html
         format.js {@book = @book_state.book}
@@ -16,6 +17,7 @@ class BookStatesController < ApplicationController
   def update
     @book_state = BookState.find params[:id]
     if @book_state.update_attributes book_state_params
+      create_activity @book_state.book.id, @book_state.state
       respond_to do |format|
         format.html
         format.js {@book = @book_state.book}
