@@ -8,8 +8,8 @@ class Book < ActiveRecord::Base
   has_many :favorites, dependent: :destroy
   has_many :book_states, dependent: :destroy
   
-  validates :title, presence: true, length: {minimum: 6}
-  validates :author, presence: true, length: {minimum: 6}
+  validates :title, presence: true
+  validates :author, presence: true
   validates :publish_date, :number_page, :rating, presence: true
   validate :has_important_photo
 
