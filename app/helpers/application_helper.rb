@@ -34,4 +34,9 @@ module ApplicationHelper
     end
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
+
+  def sortable(column, title = nil)
+    title ||= column.titleize
+    link_to title, params.merge(sort: column, page: nil)
+  end  
 end

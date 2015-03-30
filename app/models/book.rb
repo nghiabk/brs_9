@@ -33,5 +33,9 @@ class Book < ActiveRecord::Base
     unless photos.any? {|photo| photo.important?}
       errors.add(:base, "You have to choose a important photo!")
     end
-  end  
+  end
+
+  def self.search(search, filter)
+    search ? where("#{filter} LIKE ?", "%#{search}%") : all
+  end     
 end
