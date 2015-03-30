@@ -10,6 +10,7 @@
 
   <div class="field">
     <%= f.label :avatar %><br />
+    <%= image_tag @user.image.url if @user.image? %><br><br>
     <%= f.file_field :image, autofocus: true %>
   </div>
 

@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get 'help' => 'static_pages#help'
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
-  match '/users/:id/:type', to: 'users#show', via: :get
+  match '/users/:id/:type', to: 'users#show', via: [:get]
+
 
   devise_for :users
   resources :users
