@@ -1,0 +1,3 @@
+$("#count-like-activity-<%= @like.activity.id %>").html("<%= @like.activity.likes.count %>");
+$("#like-activity-<%= @like.activity.id %>").html("<%= j button_to 'Like', 
+    [@like.activity, Like.new], remote: true %>");

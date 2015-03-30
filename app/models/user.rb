@@ -64,4 +64,8 @@ class User < ActiveRecord::Base
   def to_param
     [id, username.parameterize].join("-")
   end
+
+  def like? activity
+    !self.likes.find_by(activity: activity).nil?
+  end  
 end

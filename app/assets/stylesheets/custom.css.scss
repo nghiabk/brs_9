@@ -544,6 +544,19 @@ input[type='checkbox'] {
   }
 }
 
-input[type="submit"]{
-  width: 30%;
+.activities {
+  li {
+    list-style-type: none;
+    .form-like {
+      width: 30%;
+      .count-like {
+        float: left;
+        margin-right: 10px;
+      }
+      .button-like {
+        width: 30%;
+        float: left;
+      }
+    }  
+  }
 }

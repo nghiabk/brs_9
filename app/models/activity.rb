@@ -1,5 +1,6 @@
 class Activity < ActiveRecord::Base
   belongs_to :user
+  has_many :likes
   
   validates :target_id, :action_type, presence: true
 

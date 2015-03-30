@@ -6,7 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-4.times do |n|
-  BookState.create state: "reading", user_id: 1, book_id: n+1
-  BookState.create state: "readed", user_id: 1, book_id: n+1
+User.create! email: "example@gmail.com", username: "example", password: "12345678", role: "admin"
+99.times do |n|
+  username = Faker::Name.name
+  email = "example-#{n+1}@gmail.com"
+  User.create! email: email, username: username, password: "12345678", role: "user"
 end
+users = User.all
+user  = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
