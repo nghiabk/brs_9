@@ -1,23 +1,23 @@
-<div class="book">
+<div class="book well">
   <div class="list-book-intro">
     <div class="list-book-image">
         <%= link_to (image_tag book.important_photo.image.url), book %>
     </div>
+    <div class="clear"></div>
     <div class="list-book-state">
       <% if current_user.state_of_book(book).nil? %>
-        <%= button_to "New book", {}, disabled: true, class: "btn btn-primary" %>
+        <%= button_to "New book", {}, disabled: true, class: "btn-primary" %>
       <% else %>
-        <%= button_to current_user.state_of_book(book).state, {}, disabled: true, class: "btn btn-primary" %>
+        <%= button_to current_user.state_of_book(book).state, {}, disabled: true, class: "btn-primary" %>
       <% end %>  
     </div>  
   </div>
   <div class="list-book-detail">
     <span><%= link_to book.title, book %></span>
-    by <span><%= book.author %></span>
+    by Author <span><%= book.author %></span>
     <div class="show-book-rate-star">
       <%= render_stars(book.rating) %>
-    </div>
-    <%= book.rating %> --
+    </div><br />
     <%= book.publish_date.strftime("Publish: %m/%d/%y") %>
     in <%= book.category.name %>
   </div>

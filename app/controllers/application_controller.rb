@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
   protect_from_forgery with: :exception
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
@@ -14,5 +15,5 @@ class ApplicationController < ActionController::Base
 
   def create_activity target_id, action
     Activity.create user: current_user, target_id: target_id, action_type: action
-  end  
+  end
 end

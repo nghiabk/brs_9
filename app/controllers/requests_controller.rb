@@ -1,5 +1,4 @@
 class RequestsController < ApplicationController
-  before_action :authenticate_user!
   before_action :not_is_admin
 
   def index

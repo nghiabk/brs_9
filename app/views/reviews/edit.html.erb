@@ -3,7 +3,7 @@
   <div class="edit-book-info">
     <span>Edit review of <%= link_to "#{@review.book.title}", @review.book %></span>
     <div class="edit-book-image">
-      <%= image_tag @review.book.image.url if @review.book.image? %>
+      <%= image_tag @review.book.important_photo.image.url %>
     </div>
     <div class="edit-book-info">
       <span>

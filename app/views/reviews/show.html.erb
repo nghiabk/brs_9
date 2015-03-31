@@ -2,7 +2,7 @@
 <div class="row">
   <div class="show-review">
     <div class="show-book">
-      <%= image_tag @review.book.image.url if @review.book.image? %>
+      <%= image_tag @review.book.important_photo.image.url %>
     </div>
     <div class="info-review">
       <div class="name-book">
@@ -13,7 +13,7 @@
       <div class="show-review-region">
         <div class="info-user">
           <div class="info-user-avatar">
-            <%= image_tag @review.user.image.url if @review.user.image? %>
+            <%= image_tag @review.user.image? ? @review.user.image.url : "default_user.jpeg" %>
           </div>
           <div class="info-user-rating">
             <span><%= @review.user.username %> review</span>

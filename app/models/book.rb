@@ -3,7 +3,6 @@ class Book < ActiveRecord::Base
 
   has_many :reviews, dependent: :destroy
   has_many :photos, dependent: :destroy
-  has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :book_states, dependent: :destroy

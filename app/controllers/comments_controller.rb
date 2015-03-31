@@ -1,21 +1,15 @@
 class CommentsController < ApplicationController
+  respond_to :js
+  
   def index
     @review = Review.find params[:review_id]
-    respond_to do |format|
-      format.html
-      format.js
-    end  
   end
 
   def create
     @comment = Comment.new comment_params
     @comment.user = current_user      
     if @comment.save
-      create_activity @comment.review.id, "comment"
-      respond_to do |format|
-        format.html
-        format.js
-      end
+      create_activity @comment.id, "comment"
     else
       redirect_to @comment.book  
     end    
@@ -24,10 +18,6 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find params[:id]
     @comment.destroy
-    respond_to do |format|
-      format.html
-      format.js
-    end  
   end
 
   private

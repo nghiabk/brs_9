@@ -2,10 +2,8 @@ class BookStatesController < ApplicationController
   def create
     @book_state = BookState.new book_state_params
     if @book_state.save
-      flash.now[:success]= "success"
       create_activity @book_state.book.id, @book_state.state
       respond_to do |format|
-        format.html
         format.js {@book = @book_state.book}
       end
     else

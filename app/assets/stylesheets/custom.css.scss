@@ -182,6 +182,8 @@ input[type='checkbox'] {
 
 .admin-new-category {
   margin-bottom: 20px;
+  margin-left: 40%;
+
 }
 
 .category-form {
@@ -476,8 +478,8 @@ input[type='checkbox'] {
   .book {
     border: 1px solid $gray-medium-light;
     padding: 20px;
-    width: 100%;
-    height: 300px;
+    width: 80%;
+    height: 170px;
     margin-top: 20px;
     margin-bottom: 20px;
     .list-book-intro {
@@ -485,17 +487,22 @@ input[type='checkbox'] {
       float: left;
       .list-book-image {
         img {
-          width: 100%;
+          width: 60%;
+          padding-bottom: 10px;
         }
+        margin-bottom: 10px;
       }
       .list-book-state {
         margin-top: 10px;
+        input[type=submit] {
+          width: 60px;
+        }
       }
     }
     .list-book-detail {
-      float: right;
-      padding-right: 20px;
-      font-size: 30px;
+      float: left;
+      padding-right: 10%;
+      font-size: 20px;
     }
   }
  }
@@ -532,15 +539,22 @@ input[type='checkbox'] {
     margin-left: 20%;
     width: 100%;
     .search-form {
-      width: 50%;
+      width: 20%;
       float: left;
+      margin-right: 10px;
     }
     .filter-select-form {
-      width: 20%;
+      width: 10%;
+      float: left;
+      margin-right: 5px;
     }
     .search-button {
-      width: 10%;
+      width: 8%;
+      float: left;
     }
+  }
+  .sort-book {
+    margin-left: 25%;
   }
 }
 
