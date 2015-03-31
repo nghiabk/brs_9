@@ -1,18 +1,22 @@
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-md-3">
     <section class="user_info">
       <%= render 'shared/user_info' %>
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
+    <% unless current_user.is_user? @user %>
+      <%= link_to "Favorite book", @user, remote: true %>
+    <% end %>  
   </aside>
-  <div class="col-md-8">
+  <div class="col-md-9">
     <%= render 'follow_form' if user_signed_in? %>
     <h1>History reading</h1>
-    <% current_user.book_states.each do |book_state| %>
-      <%= render book_state.book %>
-      <b>State:</b><%= book_state.state %><br><br><br>
-    <% end %>
+    <div class="list-books">
+      <% @user.book_states.each do |book_state| %>
+        <%= render book_state.book %>
+      <% end %>
+    </div>
   </div>
 </div>

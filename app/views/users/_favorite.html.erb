@@ -1,0 +1,17 @@
+<div class="book well">
+  <div class="list-book-intro">
+    <div class="list-book-image">
+        <%= link_to (image_tag favorite.book.important_photo.image.url), favorite.book %>
+    </div>
+  </div>
+  <div class="list-book-detail">
+    <span><%= link_to favorite.book.title, favorite.book %></span>
+    by Author <span><%= favorite.book.author %></span>
+    <div class="show-book-rate-star">
+      <%= render_stars(favorite.book.rating) %>
+    </div><br />
+    <%= favorite.book.publish_date.strftime("Publish: %m/%d/%y") %>
+    in <%= favorite.book.category.name %>
+  </div>
+</div>
+<div class="clear"></div>  

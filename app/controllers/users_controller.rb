@@ -11,6 +11,10 @@ class UsersController < ApplicationController
       @users = @users.paginate page: params[:page]
       render 'show_follow'
     end
+    respond_to do |format|
+      format.html
+      format.js
+    end  
   end
 
   def destroy

@@ -473,7 +473,6 @@ input[type='checkbox'] {
 
 .list-books {
   margin-left: 15%;
-  margin-right: 15%;
   margin-top: 20px;
   .book {
     border: 1px solid $gray-medium-light;
@@ -495,7 +494,7 @@ input[type='checkbox'] {
       .list-book-state {
         margin-top: 10px;
         input[type=submit] {
-          width: 60px;
+          width: 70px;
         }
       }
     }

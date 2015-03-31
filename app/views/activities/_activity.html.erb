@@ -1,8 +1,8 @@
 <li id="activity-<%= activity.id %>">
-  <%= link_to activity.user.username, activity.user %>
+  <strong><%= link_to activity.user.username, activity.user %></strong>
   <%= activity.message %>
   <span class="timestamp">
-    <%= time_ago_in_words activity.created_at %> ago
+    <small><i><%= time_ago_in_words activity.created_at %> ago</i></small>
   </span>
   <div class="form-like">
     <div id="count-like-activity-<%= activity.id %>" class="count-like">
