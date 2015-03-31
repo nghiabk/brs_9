@@ -1,8 +1,3 @@
-<% @book_states.each do |book_state| %>
-  <%= render book_state.book %>
-  <b>State:</b><%= book_state.state %><br><br><br>
-<% end %>
-
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
@@ -14,5 +9,10 @@
   </aside>
   <div class="col-md-8">
     <%= render 'follow_form' if user_signed_in? %>
+    <h1>History reading</h1>
+    <% current_user.book_states.each do |book_state| %>
+      <%= render book_state.book %>
+      <b>State:</b><%= book_state.state %><br><br><br>
+    <% end %>
   </div>
 </div>
