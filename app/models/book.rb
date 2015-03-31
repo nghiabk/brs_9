@@ -1,6 +1,8 @@
 class Book < ActiveRecord::Base
   belongs_to :category
 
+  before_destroy :destroy_activity
+
   has_many :reviews, dependent: :destroy
   has_many :photos, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -34,5 +36,10 @@ class Book < ActiveRecord::Base
 
   def self.search(search, filter)
     search ? where("#{filter} LIKE ?", "%#{search}%") : all
-  end     
+  end 
+
+  def destroy_activity
+    Activity.find_by(action_type: "Read", target_id: self.id).destroy
+    Activity.find_by(action_type: "Reading", target_id: self.id).destroy
+  end      
 end
