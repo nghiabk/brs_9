@@ -16,7 +16,7 @@ class Book < ActiveRecord::Base
   
   def calculate_rating
     rates = self.reviews.collect{|r| r.rate if r.rate > 0}
-    return rates.size == 0 ? 0 : rates.sum / rates.size
+    return rates.size == 0 ? 0.0 : rates.sum.to_f / rates.size
   end
 
   def important_photo

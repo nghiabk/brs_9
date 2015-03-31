@@ -1,0 +1,13 @@
+<% provide(:title, "books") %>
+<div class="row">
+  <div class="col-md-12">
+    <h1>List book in <%= @category.name %></h1>
+    <ul class="categories_list">
+      <div class="list-books"> 
+        <% @category.books.each do |book| %>
+          <%= render 'books/book', book: book %>
+        <% end %>
+      </div>
+    </ul> 
+  </div>
+</div> 

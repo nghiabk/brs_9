@@ -1,5 +1,5 @@
 <% provide :title, "Edit review of #{@review.book.title}" %>
-<div class="row">
+<div class="row col-md-6 col-md-offset-2">
   <div class="edit-book-info">
     <span>Edit review of <%= link_to "#{@review.book.title}", @review.book %></span>
     <div class="edit-book-image">
@@ -17,12 +17,13 @@
       <%= f.label :rate, "Rate book:" %><br />
       <% (1..5).each do |r| %>
         <%= f.label :rate do %>
-          <%= "#{r}" %><%= f.radio_button :rate, "#{r}", class: "radio" %>
+          <%= f.radio_button :rate, "#{r}", class: "radio" %>
         <% end %>  
       <% end %><br />
       <%= f.label :content, "Your review" %>
-      <%= f.text_field :content, class: "form-control" %>
+      <%= f.text_area :content, class: "form-control" %>
       <%= f.submit "Submit", class: "btn btn-primary" %>
     <% end %>
   </div>  
 </div>  
+<div class="clear"></div>

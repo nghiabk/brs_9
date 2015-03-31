@@ -6,9 +6,9 @@
   <%= f.label :rate, "Rate book:" %><br />
   <% (1..5).each do |r| %>
     <%= f.label :rate do %>
-      <%= "#{r}" %><%= f.radio_button :rate, "#{r}", class: "radio" %>
+      <%= f.radio_button :rate, "#{r}", class: "radio" %>
     <% end %>  
-  <% end %><br />  
+  <% end %><br />
   <%= f.label :content, "Your review:" %>
   <%= f.text_area :content, placeholder: "Review content", size: "100x10", 
   class: "form-control" %><br>

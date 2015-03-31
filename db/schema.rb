@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330054531) do
+ActiveRecord::Schema.define(version: 20150331095200) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "target_id"
@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(version: 20150330054531) do
     t.string   "author"
     t.datetime "publish_date"
     t.integer  "number_page"
-    t.integer  "rating",       default: 0
+    t.float    "rating",       default: 0.0
     t.integer  "category_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "favorite",     default: 0
   end
 

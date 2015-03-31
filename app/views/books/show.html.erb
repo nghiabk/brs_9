@@ -39,11 +39,11 @@
         </tr>
         <tr>
           <td>Publish date:</td>
-          <td><%= @book.publish_date.strftime("The date is %m/%d/%y") %></td>
+          <td><%= @book.publish_date.strftime("%m/%d/%y") %></td>
         </tr>
         <tr>
           <td>Category:</td>
-          <td><%= @book.category.name %></td>
+          <td><%= link_to @book.category.name, category_path(@book.category) %></td>
         </tr>
       </table>  
     </div>  

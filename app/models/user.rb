@@ -67,5 +67,9 @@ class User < ActiveRecord::Base
 
   def like? activity
     !self.likes.find_by(activity: activity).nil?
+  end
+
+  def load_favorites
+    Book.where id: self.favorites.map(&:book_id)
   end  
 end
