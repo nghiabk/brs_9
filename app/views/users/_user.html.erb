@@ -1,2 +1,2 @@
-<%= image_tag user.image.url if user.image? %>
+<%= image_tag user.image? ? user.image.url : "default_user.jpeg" %>
 <%= link_to user.username, user %><br><br>
