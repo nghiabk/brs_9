@@ -1,5 +1,4 @@
-class Admin::BooksController < ApplicationController
-
+class Admin::BooksController < Admin::BaseAdminController
   def new
     @book = Book.new
     @book.photos.build

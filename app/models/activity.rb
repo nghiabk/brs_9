@@ -1,6 +1,6 @@
 class Activity < ActiveRecord::Base
   belongs_to :user
-  has_many :likes
+  has_many :likes, dependent: :destroy
   
   validates :target_id, :action_type, presence: true
 

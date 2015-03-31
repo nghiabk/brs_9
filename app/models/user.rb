@@ -6,14 +6,14 @@ class User < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  has_many :comments
-  has_many :likes
-  has_many :reviews
-  has_many :book_states
-  has_many :favorites
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :book_states, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :relationships
-  has_many :activities
-  has_many :requests
+  has_many :activities, dependent: :destroy
+  has_many :requests, dependent: :destroy
   has_many :active_relationships, class_name:  'Relationship',
                                   foreign_key: 'follower_id',
                                   dependent:   :destroy

@@ -8,9 +8,7 @@ class Book < ActiveRecord::Base
   has_many :favorites, dependent: :destroy
   has_many :book_states, dependent: :destroy
   
-  validates :title, presence: true
-  validates :author, presence: true
-  validates :publish_date, :number_page, :rating, presence: true
+  validates :publish_date, :number_page, :rating, :title, :author, presence: true
   validate :has_important_photo
 
   accepts_nested_attributes_for :photos, allow_destroy: true
