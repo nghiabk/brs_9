@@ -1,10 +1,10 @@
-<% unless current_user.review_for_book(@book).nil? %>
+<% unless current_user.load_books(:review, @book).nil? %>
   <span>Rate book</span><br />
-  <% current_user.review_for_book(@book).rate.times do |i| %>
-    <%= link_to image_tag('star-on.png', id: "star-#{i}"), book_review_path(@book, current_user.review_for_book(@book), review: {rate: "#{i+1}"}), method: :patch, remote: true %>
+  <% current_user.load_books(:review, @book).rate.times do |i| %>
+    <%= link_to image_tag('star-on.png', id: "star-#{i}"), book_review_path(@book, current_user.load_books(:review, @book), review: {rate: "#{i+1}"}), method: :patch, remote: true %>
   <% end %>
-  <% (5 - current_user.review_for_book(@book).rate).times do |i| %>
-    <%= link_to image_tag('star-off.png', id: "star-#{i}"), book_review_path(@book, current_user.review_for_book(@book), review: {rate: "#{i + current_user.review_for_book(@book).rate + 1}"}), method: :patch, remote: true %>
+  <% (5 - current_user.load_books(:review, @book).rate).times do |i| %>
+    <%= link_to image_tag('star-off.png', id: "star-#{i}"), book_review_path(@book, current_user.load_books(:review, @book), review: {rate: "#{i + current_user.load_books(:review, @book).rate + 1}"}), method: :patch, remote: true %>
   <% end %>  
 <% else %>
   <%= render_blank_stars %>

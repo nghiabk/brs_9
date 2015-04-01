@@ -1,10 +1,10 @@
 <div id="form-review"></div>  
-<% if !current_user.review_for_book(@book).nil? %>
-  <%= link_to "show my review | ", current_user.review_for_book(@book) %>
+<% if !current_user.load_books(:review, @book).nil? %>
+  <%= link_to "show my review | ", current_user.load_books(:review, @book) %>
   <%= link_to "edit | ", 
-  edit_book_review_path(@book, current_user.review_for_book(@book)) %>
-  <%= link_to "delete", review_path(current_user.review_for_book(@book)), method: :delete %>
-<% elsif !current_user.state_of_book(@book).nil? %>
+  edit_book_review_path(@book, current_user.load_books(:review, @book)) %>
+  <%= link_to "delete", review_path(current_user.load_books(:review, @book)), method: :delete %>
+<% elsif !current_user.load_books(:book_state, @book).nil? %>
   <%= render 'reviews/new' %> 
 <% end %>
 <div class="title-review well">

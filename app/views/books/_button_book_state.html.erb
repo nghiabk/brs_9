@@ -1,7 +1,7 @@
-<% if current_user.state_of_book(@book).nil? %>
+<% if current_user.load_books(:book_state, @book).nil? %>
   <%= button_to "Unread", book_states_path(book_state: {book_id: @book.id, user_id: current_user.id, state: "Reading"}), remote: true, class: "btn btn-primary" %>
-<% elsif current_user.state_of_book(@book).state == "Reading" %>
-  <%= button_to "#{current_user.state_of_book(@book).state}", book_state_path(current_user.state_of_book(@book), book_state: {book_id: @book.id, user_id: current_user.id, state: "Read"}), method: :patch, remote: true, class: "btn btn-primary", id: "submit-state-book" %>
+<% elsif current_user.load_books(:book_state, @book).state == "Reading" %>
+  <%= button_to "#{current_user.load_books(:book_state, @book).state}", book_state_path(current_user.load_books(:book_state, @book), book_state: {book_id: @book.id, user_id: current_user.id, state: "Read"}), method: :patch, remote: true, class: "btn btn-primary", id: "submit-state-book" %>
 <% else %>
   <%= button_to "Read", {}, disabled: true, class: "btn btn-primary" %>
 <% end %>

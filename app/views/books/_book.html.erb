@@ -4,10 +4,10 @@
         <%= link_to (image_tag book.important_photo.image.url), book %>
     </div>
     <div class="list-book-state">
-      <% if current_user.state_of_book(book).nil? %>
+      <% if current_user.load_books(:book_state, book).nil? %>
         <%= button_to "New book", {}, disabled: true, class: "btn-primary" %>
       <% else %>
-        <%= button_to current_user.state_of_book(book).state, {}, disabled: true, class: "btn-primary" %>
+        <%= button_to current_user.load_books(:book_state, book).state, {}, disabled: true, class: "btn-primary" %>
       <% end %>  
     </div>  
   </div>

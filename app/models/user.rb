@@ -31,17 +31,9 @@ class User < ActiveRecord::Base
     self == user
   end 
 
-  def review_for_book book
-    self.reviews.select{|r| r.book_id == book.id}.first
-  end
-
-  def state_of_book book
-    self.book_states.select{|r| r.book_id == book.id}.first
-  end
-
-  def favorite_of_book book
-    self.favorites.select{|f| f.book_id == book.id}.first
-  end
+  def load_books object, book
+    self.send("#{object}s").select{|f| f.book_id == book.id}.first
+  end  
 
   def follow other_user
     active_relationships.create followed_id: other_user.id
