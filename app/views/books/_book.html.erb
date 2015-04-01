@@ -18,7 +18,7 @@
       <%= render_stars(book.rating) %>
     </div><br />
     <%= book.publish_date.strftime("Publish: %m/%d/%y") %>
-    in <%= book.category.name %>
+    in <%= link_to book.category.name, category_path(book.category) %>
   </div>
   <% if current_user.is_admin? %>
     <%= link_to "Edit", edit_admin_book_path(book) %> |

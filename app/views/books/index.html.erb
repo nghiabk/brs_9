@@ -23,6 +23,7 @@
       <span><%= sortable "author" %></span>
       <span><%= sortable "rating", "Rate" %></span>
       <span><%= sortable "categories.name", "Category" %></span><br />
+      <span><%= sortable "favorite", "Favorite" %></span>
       <% unless params[:filter].nil? %>    
         <strong>Result for search:</strong> <%= pluralize(@books.count, "book", "books") %>
       <% end %>

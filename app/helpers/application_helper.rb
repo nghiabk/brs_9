@@ -19,7 +19,7 @@ module ApplicationHelper
     floored = value.floor
     floored.times {output += image_tag('star-on.png')}
     output += image_tag('star-half.png') if(value - floored) >= 0.5
-    (5 - value).round.times {output += image_tag('star-off.png')}
+    (5 - value.round).times {output += image_tag('star-off.png')}
     output.html_safe
   end  
 

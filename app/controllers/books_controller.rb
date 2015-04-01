@@ -1,7 +1,11 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.includes(:category).search(params[:search], 
-                    params[:filter]).order sort_column
+    @books = if params[:sort] == "favorite"
+      current_user.load_favorites
+    else
+      Book.includes(:category).search(params[:search], 
+            params[:filter]).order sort_column
+    end  
     @books = @books.paginate page: params[:page], per_page: 10
   end
 
