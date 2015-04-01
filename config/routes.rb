@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   match '/users/:id/:type', to: 'users#show', via: :get
 
   devise_for :users
-  resources :users
+
+  resources :users, only: [:index, :show, :destroy]
   resources :activities, only: [] do
     resources :likes, only: [:create, :destroy]
   end

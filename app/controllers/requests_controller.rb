@@ -1,8 +1,9 @@
 class RequestsController < ApplicationController
-  before_action :not_is_admin
+  before_action :verify_admin
 
   def index
-    @requests = current_user.requests.paginate page: params[:page], per_page: 15
+    @requests = current_user.requests
+    @requests = @requests.paginate page: params[:page], per_page: 15
   end
 
   def new
@@ -27,7 +28,7 @@ class RequestsController < ApplicationController
   end
 
   private
-  def not_is_admin
+  def verify_admin
     if current_user.is_admin?
       flash[:success] = "Admin can't create request"
       redirect_to root_url

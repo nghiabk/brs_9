@@ -1,4 +1,4 @@
-class Admin::RequestsController < Admin::BaseAdminController 
+class Admin::RequestsController < Admin::BaseAdminController
   def index
     @requests = Request.paginate page: params[:page], per_page: 15
   end

@@ -29,7 +29,7 @@ class Book < ActiveRecord::Base
   end
 
   def has_important_photo
-    unless photos.any? {|photo| photo.important?}
+    if important_photo.nil?
       errors.add(:base, "You have to choose a important photo!")
     end
   end

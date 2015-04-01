@@ -2,18 +2,8 @@
 <h1>Edit category</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for [:admin, @category] do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      
-      <%= f.label :name %>
-      <%= f.text_field :name, placeholder: "Category name", class: "form-control" %>
-
-      <%= image_tag @category.image.url if @category.image? %><br>
-
-      <%= f.label :avatar %>
-      <%= f.file_field :image, placeholder: "Category name", class: "form-control" %>
-      
-      <%= f.submit "Update category", class: "btn btn-primary" %>
+    <%= form_for [:admin, @category] do |builder| %>
+      <%= render 'form_category', f: builder %>
     <% end %>
   </div> 
 </div>

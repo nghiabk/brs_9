@@ -5,7 +5,7 @@
       <li>
         <%= image_tag user.image.url if user.image? %>
         <%= link_to user.username, user %>
-        <% unless user.is_user? current_user %>
+        <% unless user.is_admin? %>
           | <%= link_to "delete", user, method: :delete, data: {confirm: " are you sure?"} %>
         <% end %>
       </li>
